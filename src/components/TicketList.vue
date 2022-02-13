@@ -1,17 +1,14 @@
 <template>
     <div>
-            <div class="ticket" v-for="ticket in tickets" v-bind:key="ticket.id">
-                <div><strong>Departure City: </strong>{{ ticket.departurecity }}</div>
-                <div><strong>Arrival City: </strong>{{ ticket.arrivalcity }}</div>
-                <div><strong>Departure Date Time: </strong>{{ ticket.departuredatetime }}</div>
-                <div><strong>Arriva Date Time: </strong>{{ ticket.arrivadatetime }}</div>
-                <div><strong>Cost: </strong>{{ ticket.cost }}</div>
-            </div>
+        <h3>Tickets list</h3>
+        <ticket-item v-for="ticket in tickets" :ticket="ticket" :key="ticket.id"/>
     </div>
 </template>
 
 <script>
+import TicketItem from "./TicketItem.vue";
 export default {
+  components: { TicketItem },
     props:{
         tickets:{
             type: Array,

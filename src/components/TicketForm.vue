@@ -6,7 +6,7 @@
                 <input v-model="ticket.arrivalcity" class="input" type="text" placeholder="Arrival City">
                 <input v-model="ticket.departuredatetime" class="input" type="text" placeholder="Departure Date Time">
                 <input v-model="ticket.arrivadatetime" class="input" type="text" placeholder="Arriva Date Time">
-                <input v-model="ticket.cost" class="input" type="text" placeholder="Сost">
+                <input v-model="ticket.cost" class="input" type="text" placeholder="Cost">
                 <button class="btn" @click="createTicket">Create</button>
         </form>
     </div>
