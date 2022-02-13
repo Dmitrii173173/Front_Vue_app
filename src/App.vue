@@ -1,6 +1,16 @@
 
 <template>
     <div class="app">
+        <h1>T I C K E T shop</h1>
+        <div class="app_btns">
+            <button>
+                
+            </button>
+            <my-select 
+            v-model="selectedSort"
+            :options="sortOptions"
+            />
+        </div>
         <ticket-form
             @create="createTicket"
 
@@ -12,12 +22,14 @@
 </template>
 
 <script>
+import MySelect from './components/MySelect.vue';
 import TicketForm from './components/TicketForm.vue';
 import TicketList from './components/TicketList.vue';
 export default {
     components: {
         TicketList,
-        TicketForm
+        TicketForm,
+        MySelect
     },
     data(){
         return{
@@ -29,6 +41,11 @@ export default {
                 {id: 3, departurecity:'Bangkok', arrivalcity:'Islamabad', departuredatetime:'06.16.2022, 16:30',
                 arrivadatetime:'06.17.2022, 06:20', cost:'20000'},
             ],
+            selectedSort:'',
+            sortOptions:[
+                {value:'departurecity', departurecity:'Departure City'},
+                {value:'arrivalcity', arrivalcity:'Arrival City'},
+            ]
         }
     },
 
@@ -36,6 +53,13 @@ export default {
       createTicket(ticket){
           this.tickets.push(ticket);
       },
+      watch:{
+                selectedSort(newValue){
+                    this.tickets.sort ((ticket1, ticket2 ) => {
+                        return ticket1[newValue]?.localeCompare(ticket2[newValue])
+                    })
+                },
+            }
     }
 }
 </script>
@@ -47,5 +71,10 @@ export default {
 }
 .app{
     padding: 20px;
+}
+.app_btns{
+    margin: 50px;
+    display: flex;
+    justify-content: space-between;
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
     <div>
         <h3>Tickets list</h3>
-        <ticket-item v-for="ticket in tickets" :ticket="ticket" :key="ticket.id"/>
+        <ticket-item  
+        v-for="ticket in tickets" 
+        :ticket="ticket" 
+        :key="ticket.id"/>
     </div>
 </template>
 
@@ -19,9 +22,5 @@ export default {
 </script>
 
 <style scoped>
-.ticket {
-    padding: 15px;
-    border: 2px solid teal;
-    margin-top: 15px;
-}
+
 </style>
